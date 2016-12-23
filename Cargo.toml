@@ -1,0 +1,11 @@
+[package]
+name = "kabuki"
+version = "0.0.1"
+authors = ["Carl Lerche <me@carllerche.com>"]
+description = "Name reservation"
+license = "MIT"
+
+[dependencies]
+futures = "0.1"
+tokio-core = "0.1"
+futures-mpsc = { git = "https://github.com/carllerche/futures-mpsc" }
