@@ -24,14 +24,13 @@
 
 #[macro_use]
 extern crate futures;
+extern crate futures_spawn;
 extern crate futures_mpsc;
 extern crate tokio_core;
 
-mod spawn;
-pub use spawn::Spawn;
-
 use futures::{Future, Stream, IntoFuture, Async, AsyncSink, Sink, Poll};
 use futures::sync::oneshot;
+use futures_spawn::Spawn;
 use futures_mpsc as mpsc;
 
 use std::mem;
@@ -231,7 +230,7 @@ impl Builder {
               S: Spawn<ActorCell<A>>,
     {
         let (tx, rx) = self.pair(actor);
-        s.spawn(rx);
+        s.spawn_detached(rx);
         tx
     }
 

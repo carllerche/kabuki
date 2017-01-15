@@ -8,4 +8,10 @@ license = "MIT"
 [dependencies]
 futures = "0.1"
 tokio-core = "0.1"
-futures-mpsc = { git = "https://github.com/carllerche/futures-mpsc" }
+futures-threadpool = "0.1"
+futures-mpsc = "0.1"
+
+[dependencies.futures-spawn]
+version = "0.1"
+default-features = false
+features = ["use_std", "tokio"]
