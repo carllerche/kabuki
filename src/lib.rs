@@ -54,7 +54,7 @@ pub trait Actor {
     /// Poll the `Actor` to see if it has completed processing.
     ///
     /// Allows the actor to advance its internal state without receiving a
-    /// message. For example, if the actor performs sets a timeout, the task
+    /// message. For example, if the actor sets a timeout, the task
     /// managing the actor will get notified and this function will be called.
     fn poll(&mut self, state: ActorState) -> Async<()> {
         if state == ActorState::Listening {
@@ -67,7 +67,7 @@ pub trait Actor {
     /// Indicates that the actor is ready to process the next inbox message
     ///
     /// Before the `ActorCell` attempts to read a message off the inbox, it will
-    /// call this function. If the actor value is not ready to process the a new
+    /// call this function. If the actor value is not ready to process a new
     /// message, the cell will wait until it is.
     fn poll_ready(&mut self) -> Async<()> {
         Async::Ready(())
